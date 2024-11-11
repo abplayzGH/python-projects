@@ -1,13 +1,34 @@
 import cv2
 import numpy as np
-# import turtle as trtl
+import turtle as trtl
+import random 
 
-# t = trtl.Turtle()
+t = trtl.Turtle()
 
-def map_range(x, in_min, in_max, out_min, out_max):
-  return (x - in_min) * (out_max - out_min) // (in_max - in_min) + out_min
+def mapf(x, in_min, in_max, out_min, out_max):
+    """
+    Maps a float value 'x' from one range [in_min, in_max] to another range [out_min, out_max].
+    
+    :param x: Value to be mapped (float).
+    :param in_min: Lower bound of the input range (float).
+    :param in_max: Upper bound of the input range (float).
+    :param out_min: Lower bound of the output range (float).
+    :param out_max: Upper bound of the output range (float).
+    
+    :return: Mapped value (float) in the output range [out_min, out_max].
+    """
+    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
 
-
+def make_shape(r, g, b, x ,y):
+    
+    t.goto(x,y)
+    t.setheading(random.randint(0,360))
+    color = (r, g, b)
+    t.color(color)
+    t.begin_fill()
+    t.circle(random.randint(5,25), steps = random.randint(1,9))
+    t.end_fill()
+    
 def image_to_rgb_array(image_path):
     # Read the image using OpenCV
     image = cv2.imread(image_path)
@@ -34,15 +55,25 @@ if __name__ == "__main__":
     image_path = './image.jpg'  # Change this to your image file path
     
     rgb_array = image_to_rgb_array(image_path)
-    # turtle_rgb = []
-    # for pixel in rgb_array:
-    #     for i in range(3):
-    #         turtle_rgb.append([map_range(rgb_array[pixel][i], )])
+    turtle_rgb = []
     
-    if rgb_array is not None:
-        print("RGB Values Array:")
-        print(rgb_array)
+    
+    for pixel in rgb_array:
+            a = mapf(pixel[0], 0, 255, 0, 1)
+            b = mapf(pixel[1], 0, 255, 0, 1)
+            c = mapf(pixel[1], 0, 255, 0, 1)
+            turtle_rgb.append([a, b, c])
+                 
+    print(turtle_rgb)
+    
+    for i in range(len(turtle_rgb)):
+        make_shape(turtle_rgb[i][0], turtle_rgb[i][1], turtle_rgb[i][2], 100, 100)
+    
+    
+    # if rgb_array is not None:
+    #     print("RGB Values Array:")
+    #     print(rgb_array)
 
 # trtl.update()
-# wn = trtl.Screen()
-# wn.mainloop()
+wn = trtl.Screen()
+wn.mainloop()
