@@ -54,32 +54,31 @@ def image_to_rgb_array(image_path):
 # Main code
 if __name__ == "__main__":
     # Specify the path to your image file
-    image_path = './image2.png'  # Change this to your image file path
+    image_path = './image.jpg'  # Change this to your image file path
     
     rgb_array = image_to_rgb_array(image_path)
-    turtle_rgb = []
+    # turtle_rgb = []
+    print(rgb_array.shape)    
+    # for i in rgb_array:
+    #     print(i)
+    # for pixel in rgb_array:
+    #         a = mapf(pixel[0], 0, 255, 0, 1)
+    #         b = mapf(pixel[1], 0, 255, 0, 1)
+    #         c = mapf(pixel[2], 0, 255, 0, 1)
+    #         turtle_rgb.append([a, b, c])
+                
     
-    
-    for pixel in rgb_array:
-            a = mapf(pixel[0], 0, 255, 0, 1)
-            b = mapf(pixel[1], 0, 255, 0, 1)
-            c = mapf(pixel[2], 0, 255, 0, 1)
-            turtle_rgb.append([a, b, c])
-                 
-    print(rgb_array)
-    
-    for i in range(len(turtle_rgb)):
-        r = turtle_rgb[i][0]
-        g = turtle_rgb[i][1]
-        b = turtle_rgb[i][2]
-        print(f"I:{i}, R:{r}, G:{g}, B:{b}")
-        make_shape(r, g, b, i*20, 100)
-    
+    # for i in range(len(turtle_rgb)):
+    #     r = turtle_rgb[i][0]
+    #     g = turtle_rgb[i][1]
+    #     b = turtle_rgb[i][2]
+    #     # print(f"I:{i}, R:{r}, G:{g}, B:{b}")
+    #     make_shape(r, g, b, i*20, 100)
     
     # if rgb_array is not None:
     #     print("RGB Values Array:")
     #     print(rgb_array)
 
 # trtl.update()
-wn = trtl.Screen()
-wn.mainloop()
+# wn = trtl.Screen()
+# wn.mainloop()
