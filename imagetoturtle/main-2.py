@@ -8,10 +8,9 @@ wn.colormode(255)  # Set the color mode to 255 for RGB values
 
 screen = trtl.Screen()
 screen.setup(1920, 1080)
-t.speed(0)  # Set the turtle speed to the maximum
-t.hideturtle()
-trtl.tracer(0, 0)  # Turn off automatic screen updates
+t.speed(0)
 
+# trtl.tracer(0,0)
 def mapf(x, in_min, in_max, out_min, out_max):
     """
     Maps a float value 'x' from one range [in_min, in_max] to another range [out_min, out_max].
@@ -59,12 +58,11 @@ if __name__ == "__main__":
     
     if rgb_array is not None:
         height, width, _ = rgb_array.shape
-        offset_x = -width // 2 * 10
-        offset_y = height // 2 * 10
         for y in range(height):
             for x in range(width):
                 r, g, b = rgb_array[y, x]
-                make_shape(r, g, b, x * 10 + offset_x, offset_y - y * 10)
+                # make_shape(r, g, b, x * 5 - width * 5, height * 5 - y * 5)
+                make_shape(r, g, b, x, y)
                 
-        trtl.update()  # Update the screen all at once
+        trtl.update()
         wn.mainloop()
